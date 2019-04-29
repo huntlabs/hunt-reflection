@@ -1,0 +1,13 @@
+name "hunt-reflection"
+description "Extensions to runtime reflection in D. It's forked from Mihail-K's Witchcraft originally."
+copyright "Copyright © 2016, Mihail K"
+authors "Mihail-K"
+targetType "library"
+license "MIT"
+
+configuration "library" {
+}
+
+configuration "aggressive" {
+  versions "aggressive"
+}
