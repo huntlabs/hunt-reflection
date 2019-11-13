@@ -67,11 +67,11 @@ interface Member
         return getAttributes(typeid(T));
     }
 
-    final bool hasAttribute(TypeInfo info) {
+    final bool hasAttribute(TypeInfo info) const {
         return getAttributes.canFind!(a => a.getAttributeTypeInfo == info);
     }
 
-    final bool hasAttribute(T)() {
+    final bool hasAttribute(T)() const {
         return hasAttribute(typeid(T));
     }
 

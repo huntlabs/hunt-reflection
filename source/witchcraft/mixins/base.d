@@ -28,11 +28,15 @@ template TypeOfMeta(T)
     }
 }
 
-mixin template Witchcraft()
+mixin template Witchcraft() {
+    mixin Witchcraft!(typeof(this));
+}
+
+mixin template Witchcraft(T)
 {
     import witchcraft;
 
-    alias T = typeof(this);
+    // alias T = typeof(this);
 
     mixin WitchcraftClass!T;
     mixin WitchcraftConstructor!T;
