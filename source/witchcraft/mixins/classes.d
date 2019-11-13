@@ -153,9 +153,14 @@ mixin template WitchcraftClass(T)
             {
                 alias Bases = BaseClassesTuple!T;
 
-                static if(Bases.length > 0)
+                static if(Bases.length > 0 && !is(Bases[0] == Unqual!T))
                 {
-                    return cast(const(Class)) inspect!(Bases[0]);
+                    auto superClass = cast(const(Class)) inspect!(Bases[0]);
+                    if(this is super) { // The suer class may have metaof which is same with T.metaof, so skip it here
+                        return null;
+                    } else {
+                        return superClass;
+                    }
                 }
                 else
                 {

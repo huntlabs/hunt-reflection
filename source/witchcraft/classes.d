@@ -191,9 +191,10 @@ abstract class Class : Aggregate
      ++/
     override const(Method)[] getMethods() const
     {
-        if(getSuperClass !is null)
+        const(Class) superClassMeta = getSuperClass();
+        if(superClassMeta !is null)
         {
-            return getSuperClass.getMethods
+            return superClassMeta.getMethods
                 .filter!`a.getProtection != "private"`
                 .chain(getLocalMethods)
                 .array;
@@ -215,9 +216,10 @@ abstract class Class : Aggregate
      ++/
     override const(Method)[] getMethods(string name) const
     {
-        if(getSuperClass !is null)
+        const(Class) superClassMeta = getSuperClass();
+        if(superClassMeta !is null)
         {
-            return getSuperClass.getMethods(name)
+            return superClassMeta.getMethods(name)
                 .filter!`a.getProtection != "private"`
                 .chain(getLocalMethods(name))
                 .array;
